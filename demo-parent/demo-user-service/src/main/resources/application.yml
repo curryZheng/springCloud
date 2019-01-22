@@ -1,0 +1,34 @@
+spring:
+   jackson:
+      time-zone: GMT+8
+   cloud:
+      loadbalancer:
+        retry:
+          enabled: true #开启重试机制
+zuul:
+   host:
+      socket-timeout-millis: 30000  #zuul超时设置
+      connect-timeout-millis: 2000
+hystrix:
+   command:
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 60000 #断路器的超时时间,下级服务返回超出熔断器时间，即便成功，消费端消息也是TIMEOUT,所以一般断路器的超时时间需要大于ribbon的超时时间。
+   threadpool:
+      default:
+        coreSize: 100
+         
+feign:
+  hystrix:
+   enabled: true #熔断器启用
+              
+demo-shop-service:
+   ribbon:
+    ConnectTimeout: 250            #请求连接的超时时间
+    ReadTimeout: 60000             #请求处理的超时时间
+    OkToRetryOnAllOperations: true #对所有操作请求都进行重试
+    MaxAutoRetriesNextServer: 1    #切换实例的重试次数
+    MaxAutoRetries: 0              #对当前实例的重试次数
+   

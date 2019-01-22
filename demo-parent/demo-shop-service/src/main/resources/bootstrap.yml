@@ -1,0 +1,38 @@
+server:
+  # 端口
+  port: 6612
+
+# 默认eureka服务地址
+eurekaServer: http://localhost:6602/eureka/
+  
+spring:
+  application:
+    name: demo-shop-service
+  cloud:
+    config:
+      #读取config文件夹文件
+      name: ${spring.application.name}, global-swagger,global-db
+      label: master
+      discovery: 
+        #开启配置服务发现
+        enabled: true
+        #读取ureka上config服务实例名称
+        serviceId: demo-config
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eurekaServer}
+    registerWithEureka: true
+    fetchRegistry: true
+  instance:
+    # 实例id
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    # 实例启动页
+    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
+    prefer-ip-address: true
+  server:
+    evictionIntervalTimerInMs:5000 
+                                
+           
+           

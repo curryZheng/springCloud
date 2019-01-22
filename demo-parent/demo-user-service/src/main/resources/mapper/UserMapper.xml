@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Welcome to use the TableGo Tools. http://vipbooks.iteye.com http://blog.csdn.net/vipbooks 
+	http://www.cnblogs.com/vipbooks Author:bianj Email:edinsker@163.com Version:5.0.0 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- TEST_USER -->
+<mapper namespace="com.demo.user.dao.UserDao">
+	<!-- 结果映射 -->
+	<resultMap id="UserMap" type="com.demo.user.entity.UserEntity"></resultMap>
+	<parameterMap id="UserMap" type="com.demo.user.entity.UserEntity"></parameterMap>
+	<!-- 表所有字段 -->
+	<sql id="allColumns">
+		ID, USER_NAME, USER_PASSWORD, CITY, AGE,
+		SEX
+	</sql>
+
+	<!-- 根据条件查询数据 -->
+	<select id="queryUser" resultMap="UserMap" parameterMap="UserMap">
+		SELECT
+		*
+		FROM user WHERE 1 = 1
+		<if test="userName != null and userName != ''">
+			AND USER_NAME LIKE CONCAT('%',#{userName},'%')
+		</if>
+		<if test="city !=null and city !=''">
+			AND city LIKE CONCAT('%',#{city},'%')
+		</if>
+	</select>
+
+	<!-- 插入数据 -->
+	<insert id="insertUser" parameterMap="UserMap">
+		INSERT INTO user (
+		<include refid="allColumns" />
+		)
+		VALUES (
+		#{id},
+		#{userName},
+		#{userPassword},
+		#{city},
+		#{age},
+		#{sex}
+		)
+	</insert>
+
+
+
+	<!-- 修改数据 -->
+	<update id="updateUser" parameterMap="UserMap">
+		UPDATE user SET
+		USER_NAME =
+		#{userName},
+		USER_PASSWORD = #{userPassword},
+		CITY = #{city},
+		AGE =
+		#{age},
+		SEX = #{sex}
+		WHERE ID = #{id}
+	</update>
+	<!-- 根据用户编号查询用户信息 -->
+	<select id="queryUserById" resultMap="UserMap" >
+		select
+		*
+		from user
+		where
+		id=#{id}
+	</select>
+
+</mapper>
