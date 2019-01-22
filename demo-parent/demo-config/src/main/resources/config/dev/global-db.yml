@@ -1,7 +1,7 @@
 spring:
     datasource:
         name: testDB
-        url: jdbc:mysql://39.104.168.41:3306/testDB?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&maxReconnects=3&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false 
+        url: jdbc:mysql://************/testDB?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&maxReconnects=3&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false 
         username: admin
         password: Admin123...
         # 使用druid数据源
