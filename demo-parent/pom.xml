@@ -160,5 +160,6 @@
     <module>demo-user-api</module>
     <module>demo-user-service</module>
     <module>demo-common</module>
+    <module>demo-gateway-service</module>
 	</modules>
 </project>

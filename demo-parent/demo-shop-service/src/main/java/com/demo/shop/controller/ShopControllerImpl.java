@@ -1,5 +1,6 @@
 package com.demo.shop.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,19 @@ public class ShopControllerImpl implements ShopApiService {
 		int a =8/0;
 	
 		return  new ResultBean<>();
+	}
+
+	
+	@ApiOperation(value="网关测试方法",notes="网关测试方法")
+	@Override
+	public ResultBean<ShopDto> queryTest() {
+		ShopDto dto=new ShopDto();
+		dto.setId(5);
+		dto.setName("华为Mate20");
+		dto.setPrice(new BigDecimal(4500));
+		dto.setType(2);
+		dto.setUserName("郑磊");
+		return new ResultBean<ShopDto>(dto);
 	}
 
 }

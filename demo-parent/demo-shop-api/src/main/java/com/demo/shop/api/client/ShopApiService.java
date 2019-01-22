@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModel;
  */
 @ApiModel("商品信息API")
 @FeignClient("demo-shop-service")
-@RequestMapping(value = "/user/", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/shop/", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public interface ShopApiService {
 
 	/**
@@ -34,6 +34,9 @@ public interface ShopApiService {
 	ResultPageBean<List<ShopDto>> queryShop(queryShopReq req);
 
 	
-	@RequestMapping(value="operError",method=RequestMethod.POST)
+	@RequestMapping(value="operError",method=RequestMethod.GET)
 	ResultBean<Void> operError();
+	
+	@RequestMapping(value="queryTest",method=RequestMethod.GET)
+	ResultBean<ShopDto> queryTest();
 }

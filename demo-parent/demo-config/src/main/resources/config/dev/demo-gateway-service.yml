@@ -1,0 +1,4 @@
+swagger:
+  basePackage: com.demo.gateway
+  title: ${spring.application.name} RESTful API
+  version: 1.0

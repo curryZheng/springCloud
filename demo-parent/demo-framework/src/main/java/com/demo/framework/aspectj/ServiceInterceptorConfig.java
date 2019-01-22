@@ -39,7 +39,7 @@ public class ServiceInterceptorConfig {
 	/**
 	 * 切点
 	 */
-	@Pointcut("execution(* com.demo.*.services.impl.*.*(..))")
+	@Pointcut("execution(* com.demo.*.service.impl.*.*(..))")
 	public void executeService() {
 	}
 
