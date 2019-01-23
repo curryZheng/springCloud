@@ -13,7 +13,7 @@ import com.demo.common.structure.ResultPageBean;
 import com.demo.user.api.dto.req.QueryShopById;
 import com.demo.user.api.dto.req.QueryUserReq;
 import com.demo.user.api.dto.rsp.UserDto;
-
+import com.demo.user.failback.UserCallBackImpl;
 import io.swagger.annotations.ApiModel;
 
 /**
@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModel;
  *2019年1月15日
  */
 @ApiModel("用户管理API")
-@FeignClient("demo-user-service")//声明式Feigh 服务名必须与eureka上服务名一致  不让找不到对应服务
+@FeignClient(name = "demo-user-service", fallbackFactory = UserCallBackImpl.class)//声明式Feigh 服务名必须与eureka上服务名一致  不让找不到对应服务
 @RequestMapping(value = "/user/",consumes=MediaType.APPLICATION_JSON_UTF8_VALUE,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 public interface UserApiService {
 

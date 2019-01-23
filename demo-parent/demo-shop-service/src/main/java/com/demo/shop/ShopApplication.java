@@ -10,11 +10,12 @@ import com.demo.framework.aspectj.ControllerInterceptorConfig;
 import com.demo.framework.aspectj.ServiceInterceptorConfig;
 import com.demo.framework.config.DataSourceConfig;
 import com.demo.framework.config.swagger.SwaggerConfig;
+import com.demo.user.failback.UserCallBackImpl;
 
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableFeignClients(basePackages= {"com.demo.user.*"}) //如果调用Feign接口此注解必须加 不然会报找不到bean
-@Import(value= {DataSourceConfig.class,SwaggerConfig.class,ControllerInterceptorConfig.class,ServiceInterceptorConfig.class})
+@Import(value= {DataSourceConfig.class,SwaggerConfig.class,ControllerInterceptorConfig.class,ServiceInterceptorConfig.class,UserCallBackImpl.class})
 public class ShopApplication {
 
 	public static void main(String[] args) {

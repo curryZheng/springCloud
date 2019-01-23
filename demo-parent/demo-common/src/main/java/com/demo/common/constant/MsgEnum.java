@@ -17,7 +17,16 @@ public enum MsgEnum {
 	SUCCESS_OPERATION("0", "SUCCESS", "操作成功!"),
 	
 	/** 接口調用結果為空 */
-	CALL_RESULT_IS_ENPTY("12003", "CALL_RESULT_IS_ENPTY", "接口調用結果為空");
+	CALL_RESULT_IS_ENPTY("12003", "CALL_RESULT_IS_ENPTY", "接口調用結果為空"),
+	
+	/** 連接異常 */
+	CONNECTION_EXCEPTION("20001", "CONNECTION_EXCEPTION", "連接異常！！！"),
+	
+	/**user服务令牌key*/
+	TOKEN_USER("10016", "TOKEN_USER", "用户令牌"),
+	
+	/**SHOP服务令牌key*/
+	TOKEN_SHOP("10017", "TOKEN_SHOP", "SHOP令牌");
 	
 	private String key;
 	private String msg;

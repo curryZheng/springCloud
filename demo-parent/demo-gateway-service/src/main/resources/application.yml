@@ -3,10 +3,24 @@ server:
        max-threads: 200  #tomcat起动的最大线程数，即同时处理的任务个数，默认值为200
        min-spare-threads: 64
        
+feign:
+  hystrix:
+   enabled: true #熔断器启用
+ 
+hystrix:
+   command:
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 25000  #这个一定要加不然也会认为timeout
+
+     
 zuul:
    ribbon:
       eager-load:
           enabled: true
+   retryable: true
    routes:
        demo-shop-service:
                  path: /demo-shop-service/**
@@ -17,14 +31,14 @@ zuul:
 demo-shop-service:
    ribbon:
     ConnectTimeout: 250            #请求连接的超时时间
-    ReadTimeout: 60000             #请求处理的超时时间
+    ReadTimeout: 20000             #请求处理的超时时间
     OkToRetryOnAllOperations: true #对所有操作请求都进行重试
     MaxAutoRetriesNextServer: 1    #切换实例的重试次数
     MaxAutoRetries: 0   
 demo-user-service:
    ribbon:
     ConnectTimeout: 250            #请求连接的超时时间
-    ReadTimeout: 60000             #请求处理的超时时间
+    ReadTimeout: 20000             #请求处理的超时时间
     OkToRetryOnAllOperations: true #对所有操作请求都进行重试
     MaxAutoRetriesNextServer: 1    #切换实例的重试次数
     MaxAutoRetries: 0  
